@@ -121,8 +121,8 @@ export default function SocioDashboard() {
 
       {/* Upload Modal */}
       {showUpload && (
-        <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 backdrop-blur-sm" data-testid="upload-modal">
-          <div className="bg-white rounded-t-3xl w-full max-w-lg p-6 shadow-2xl animate-slideUp">
+        <div className="fixed inset-0 z-[60] flex items-end justify-center bg-black/40 backdrop-blur-sm" data-testid="upload-modal">
+          <div className="bg-white rounded-t-3xl w-full max-w-lg p-6 pb-24 shadow-2xl animate-slideUp">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-bold text-slate-900" style={{ fontFamily: "Manrope" }}>{t("upload_receipt")}</h3>
               <button onClick={() => setShowUpload(false)} className="text-slate-400 hover:text-slate-600"><X size={20} /></button>

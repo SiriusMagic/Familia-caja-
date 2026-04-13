@@ -129,8 +129,8 @@ export default function LoansPage() {
 
       {/* New Loan Modal */}
       {showForm && (
-        <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40 backdrop-blur-sm" data-testid="loan-modal">
-          <div className="bg-white rounded-t-3xl w-full max-w-lg p-6 shadow-2xl animate-slideUp">
+        <div className="fixed inset-0 z-[60] flex items-end justify-center bg-black/40 backdrop-blur-sm" data-testid="loan-modal">
+          <div className="bg-white rounded-t-3xl w-full max-w-lg p-6 pb-24 shadow-2xl animate-slideUp">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-bold text-slate-900" style={{ fontFamily: "Manrope" }}>{t("request_loan")}</h3>
               <button onClick={() => setShowForm(false)} className="text-slate-400 hover:text-slate-600"><X size={20} /></button>
