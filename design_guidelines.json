@@ -1,0 +1,111 @@
+{
+  "project_name": "AhorroFamiliar",
+  "theme": "light",
+  "archetype": "1_organic_earthy_with_jewel_cyan",
+  "design_philosophy": "Mobile-first financial dashboard prioritizing trust, clarity, and familial warmth. Avoids the 'sterile fintech' look by using rounded, friendly typography for headings, while maintaining rigorous data clarity. The requested teal gradient is elevated to a deep, cinematic cyan/emerald blend to feel premium.",
+  "colors": {
+    "background": {
+      "base": "bg-slate-50",
+      "surface": "bg-white",
+      "glass": "bg-white/80 backdrop-blur-xl",
+      "glass_dark": "bg-cyan-950/80 backdrop-blur-xl"
+    },
+    "primary": {
+      "gradient": "bg-gradient-to-br from-cyan-950 via-teal-900 to-emerald-900",
+      "solid": "bg-teal-700",
+      "hover": "hover:bg-teal-600",
+      "text": "text-teal-900"
+    },
+    "actions": {
+      "approve": "bg-emerald-600 hover:bg-emerald-500 text-white",
+      "reject": "bg-rose-600 hover:bg-rose-500 text-white",
+      "disabled": "bg-slate-200 text-slate-400"
+    },
+    "text": {
+      "primary": "text-slate-900",
+      "secondary": "text-slate-500",
+      "inverse": "text-white"
+    },
+    "borders": {
+      "subtle": "border-slate-200/60",
+      "active": "border-teal-700"
+    }
+  },
+  "typography": {
+    "font_family": {
+      "headings": "Manrope, sans-serif",
+      "body": "'IBM Plex Sans', sans-serif"
+    },
+    "hierarchy": {
+      "h1_hero": "text-4xl sm:text-5xl font-extrabold tracking-tight text-white",
+      "h2_section": "text-2xl font-bold tracking-tight text-slate-900",
+      "h3_card": "text-xl font-semibold text-slate-900",
+      "body": "text-base text-slate-600 leading-relaxed",
+      "data_large": "text-3xl font-mono font-medium tracking-tight text-slate-900",
+      "label": "text-xs font-semibold uppercase tracking-[0.2em] text-slate-500"
+    }
+  },
+  "spacing_and_layout": {
+    "strategy": "Mobile-first, generous internal padding for breathing room.",
+    "dashboard_grid": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6",
+    "bento_spans": {
+      "summary": "col-span-1",
+      "main_data": "col-span-1 md:col-span-2",
+      "feed": "col-span-1"
+    },
+    "card_padding": "p-6",
+    "section_gap": "space-y-8",
+    "page_padding": "px-4 py-6 md:px-8 pb-32" 
+  },
+  "components": {
+    "header": {
+      "admin": "Uses 'primary.gradient' with white text, spanning full width, rounded-b-3xl shadow-md pb-8 pt-6 px-6. Content floats over this via negative margin.",
+      "socio": "Similar to admin, providing a unified brand experience."
+    },
+    "cards": {
+      "style": "bg-white rounded-2xl border border-slate-200/60 shadow-sm",
+      "hover": "hover:shadow-md hover:border-slate-300 transition-all duration-200"
+    },
+    "bottom_navigation": {
+      "style": "fixed bottom-0 w-full z-50 bg-white/90 backdrop-blur-xl border-t border-slate-200 pb-safe pt-2 px-4 flex justify-between items-center h-16",
+      "active_item": "text-teal-700 font-bold flex flex-col items-center gap-1",
+      "inactive_item": "text-slate-500 flex flex-col items-center gap-1 hover:text-slate-700 transition-colors"
+    },
+    "buttons": {
+      "primary": "h-12 px-6 rounded-xl font-semibold tracking-wide transition-all duration-200 shadow-sm active:scale-95",
+      "approve": "h-10 px-4 rounded-lg font-medium bg-emerald-600 hover:bg-emerald-500 text-white active:scale-95",
+      "reject": "h-10 px-4 rounded-lg font-medium bg-rose-600 hover:bg-rose-500 text-white active:scale-95"
+    },
+    "modals_and_drawers": {
+      "style": "bg-white rounded-t-3xl border-t border-slate-200 shadow-2xl"
+    }
+  },
+  "icons_and_assets": {
+    "library": "lucide-react",
+    "logo_instructions": "Build an inline SVG or compose using Lucide icons: <div className='flex items-center -space-x-1'><House className='text-teal-100' size={24}/><Coins className='text-white z-10' size={20}/></div>, paired with typography 'AhorroFamiliar'.",
+    "images": {
+      "hero_background": "https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzN8MHwxfHNlYXJjaHwyfHxwaWdneSUyMGJhbmslMjBob3VzZXxlbnwwfHx8fDE3NzYwNTU3OTJ8MA&ixlib=rb-4.1.0&q=85",
+      "empty_state": "https://images.pexels.com/photos/3833052/pexels-photo-3833052.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    }
+  },
+  "animation_and_motion": {
+    "transitions": "transition-all duration-200 ease-in-out",
+    "list_stagger": "Use framer-motion to stagger list items (loans, members) on load. Delay: 0.05s per item.",
+    "page_load": "Fade in and slide up slightly (y: 10 -> 0)."
+  },
+  "accessibility_and_testing": {
+    "contrast": "Ensure white text on teal gradients meets WCAG AA 4.5:1. Use text-shadow if necessary.",
+    "testing": "All interactive elements MUST have data-testid. Examples: data-testid='login-button', data-testid='approve-loan-button', data-testid='nav-inicio'."
+  },
+  "instructions_to_main_agent": [
+    "Implement a Single Login screen with a beautiful full-cover background image (use 'hero_background') with a dark overlay, floating white glassmorphism card for the login form.",
+    "Admin Dashboard: Render a massive, immersive gradient header using the specified primary gradient. The total cash data should float inside this header.",
+    "Socio Dashboard: Follow the same structure but focus on 'Mi Ahorro' and 'Deuda'.",
+    "Upload Comprobante: Use a drag-and-drop or simple file input styled elegantly with Lucide's UploadCloud icon.",
+    "Use Shadcn UI extensively: Tabs (for Spanish/English toggle), Dialog (for loan voting), Card (for everything), Avatar (for users).",
+    "Add 'pb-24' to the main layout to ensure the bottom navigation doesn't cut off content.",
+    "Implement the Language Toggle smoothly, ideally in the Profile section or top header corner.",
+    "DO NOT use raw HTML date inputs. Use Shadcn if needed, but primarily build customized cards.",
+    "For the Logo, compose it using Lucide icons as specified in 'logo_instructions'."
+  ]
+}
