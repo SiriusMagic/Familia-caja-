@@ -519,7 +519,10 @@ async def startup():
     await db.login_attempts.create_index("identifier")
 
     admin_email = os.environ.get("ADMIN_EMAIL", "admin@ahorrofamiliar.com")
-    admin_password = os.environ.get("ADMIN_PASSWORD", "Admin123!")
+    admin_password = os.environ.get("ADMIN_PASSWORD")
+    if not admin_password:
+        logger.warning("ADMIN_PASSWORD no está definido: no se crea la cuenta de administrador.")
+        return
     existing = await db.users.find_one({"email": admin_email})
     if existing is None:
         await db.users.insert_one({
