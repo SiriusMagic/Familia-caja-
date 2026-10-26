@@ -11,15 +11,6 @@ updates:
       seguridad:
         applies-to: security-updates
         patterns: ["*"]
-  - package-ecosystem: "pip"
-    directory: "/backend"
-    schedule:
-      interval: "weekly"
-    open-pull-requests-limit: 0
-    groups:
-      seguridad:
-        applies-to: security-updates
-        patterns: ["*"]
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
