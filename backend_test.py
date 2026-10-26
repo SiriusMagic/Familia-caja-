@@ -4,6 +4,7 @@ AhorroFamiliar Backend API Testing
 Tests all authentication, admin, payment, and loan endpoints
 """
 
+import os
 import requests
 import sys
 import json
@@ -64,8 +65,8 @@ class AhorroFamiliarAPITester:
         print("\n🔐 Testing Admin Authentication...")
         
         response = self.make_request('POST', 'auth/login', {
-            'email': 'admin@ahorrofamiliar.com',
-            'password': '***ELIMINADO***'
+            'email': os.environ.get('ADMIN_EMAIL', 'admin@ahorrofamiliar.com'),
+            'password': os.environ.get('ADMIN_PASSWORD', '')
         })
         
         if response and response.status_code == 200:

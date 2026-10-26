@@ -3,7 +3,7 @@
 ## Step 1: Verify admin seeded
 ```bash
 API_URL=$(grep REACT_APP_BACKEND_URL /app/frontend/.env | cut -d '=' -f2)
-curl -s -X POST "$API_URL/api/auth/login" -H "Content-Type: application/json" -d '{"email":"admin@ahorrofamiliar.com","password":"***ELIMINADO***"}'
+curl -s -X POST "$API_URL/api/auth/login" -H "Content-Type: application/json" -d '{"email":"admin@ahorrofamiliar.com","password":"'"$ADMIN_PASSWORD"'"}'
 ```
 
 ## Step 2: Register a test user
@@ -21,7 +21,7 @@ Expected: 403 error "Tu cuenta espera aprobacion del administrador"
 ## Step 4: Admin approves user
 ```bash
 # First get admin token
-TOKEN=$(curl -s -X POST "$API_URL/api/auth/login" -H "Content-Type: application/json" -d '{"email":"admin@ahorrofamiliar.com","password":"***ELIMINADO***"}' | python3 -c "import sys,json;print(json.load(sys.stdin)['access_token'])")
+TOKEN=$(curl -s -X POST "$API_URL/api/auth/login" -H "Content-Type: application/json" -d '{"email":"admin@ahorrofamiliar.com","password":"'"$ADMIN_PASSWORD"'"}' | python3 -c "import sys,json;print(json.load(sys.stdin)['access_token'])")
 # Get pending users
 curl -s "$API_URL/api/admin/pending-users" -H "Authorization: Bearer $TOKEN"
 # Approve user (replace USER_ID)
