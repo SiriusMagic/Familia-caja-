@@ -1,10 +1,9 @@
 import { createContext, useContext, useState, useEffect, useCallback } from "react";
-import axios from "axios";
+import axios from "../lib/localApi";
 
 const AuthContext = createContext(null);
-const API = process.env.REACT_APP_BACKEND_URL;
 
-const api = axios.create({ baseURL: API });
+const api = axios.create();
 
 function formatError(detail) {
   if (detail == null) return "Algo salio mal. Intenta de nuevo.";

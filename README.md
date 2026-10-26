@@ -2,9 +2,13 @@
 
 Aplicación web para administrar una **caja de ahorro familiar**: los miembros aportan dinero, suben comprobantes de pago y piden préstamos que el resto de la familia aprueba por votación.
 
+> ✅ **Funciona 100 % en el navegador**, sin servidor ni base de datos.
+>
+> ⚠️ **Los datos se guardan en el navegador del dispositivo donde se usa** (localStorage). Para que toda la familia vea la misma caja, todos deben usar **la misma computadora y el mismo navegador**, cada uno con su cuenta. Si cada persona entra desde su propio celular, cada celular tendrá datos separados.
+
 ## Cómo funciona
 
-Hay dos tipos de usuario con un único inicio de sesión:
+Hay dos tipos de usuario con un único inicio de sesión. **El primer usuario que se registra queda como administrador**; los siguientes quedan como socios pendientes de aprobación.
 
 - **Administrador**: aprueba o rechaza registros nuevos y pagos, cambia roles, restablece contraseñas y ve el resumen de toda la caja (dinero total, préstamos activos, pendientes).
 - **Socio**: ve su saldo, su deuda y lo disponible, sube comprobantes de pago y pide préstamos.
@@ -14,46 +18,49 @@ Hay dos tipos de usuario con un único inicio de sesión:
 - **Registro con aprobación**: las cuentas nuevas quedan "pendientes" hasta que el administrador las aprueba.
 - **Pagos con comprobante**: el socio sube una foto del comprobante y el administrador lo valida.
 - **Préstamos por votación**: cada préstamo indica su motivo (salud, educación, emergencia, negocio, etc.) y se aprueba si la mayoría de los socios activos vota a favor.
-- **Seguridad**: contraseñas cifradas con bcrypt, sesiones con JWT y bloqueo de 15 minutos tras 5 intentos fallidos.
+- **Seguridad**: contraseñas con hash, bloqueo de 15 minutos tras 5 intentos fallidos. Al ser una app solo de navegador, quien tenga acceso al dispositivo puede ver los datos guardados.
 - **Idiomas**: español (por defecto) e inglés.
 
 ## Tecnología
 
-- **Frontend**: React 19 + Tailwind CSS + shadcn/ui
-- **Backend**: FastAPI (Python) con autenticación JWT
-- **Base de datos**: MongoDB
+- **React 19** + **Vite 7** + Tailwind CSS + shadcn/ui
+- **Servidor simulado en el navegador** (`frontend/src/lib/localApi.js`): mismas rutas `/api/...` y misma lógica que el antiguo backend FastAPI + MongoDB
+- Contraseñas guardadas con hash SHA-256 y sal (nunca en texto plano)
+- Las fotos de comprobantes se reducen (máx. 1000 px, JPEG) para que quepan en el navegador
 
-## Cómo ejecutarlo
+### ¿Cómo reinicio los datos?
 
-Requisitos: **Node.js 20+**, **Yarn**, **Python 3.11+** y **MongoDB** (local o en la nube).
+Herramientas del navegador (F12) → Application → Local Storage → borra la clave `ahorro-familiar-db-v1`. El siguiente usuario que se registre será el nuevo administrador.
 
-**Backend (FastAPI):**
+## Cómo usarla
 
-```bash
-cd backend
-pip install -r requirements.txt
-# Crea backend/.env con:
-#   MONGO_URL=mongodb://localhost:27017
-#   DB_NAME=nombre_de_tu_base
-#   JWT_SECRET=una_clave_larga_y_secreta
-#   ADMIN_EMAIL=admin@ejemplo.com
-#   ADMIN_PASSWORD=una_contraseña_segura
-uvicorn server:app --reload --port 8001
-```
+### Opción 1 — En el navegador, sin instalar nada
 
-**Frontend (React):**
+Ábrela en **https://siriusmagic.github.io/ahorro-familiar/**
+
+Se publica sola en GitHub Pages cada vez que hay un cambio en `main`. La primera vez hay que activarlo en **Settings → Pages → Source: GitHub Actions**.
+
+### Opción 2 — En tu computadora
+
+Requisitos: **Node.js 20 o superior** y **Yarn**.
 
 ```bash
 cd frontend
 yarn install
-# Crea frontend/.env con:
-#   REACT_APP_BACKEND_URL=http://localhost:8001
-yarn start
+yarn dev        # abre http://localhost:3000
 ```
 
-Abre http://localhost:3000 en el navegador. Todas las rutas del backend usan el prefijo `/api`.
+Para generar la versión final: `yarn build` (queda en `frontend/build/`) y `yarn preview` para probarla.
 
-Al arrancar, el backend crea automáticamente la cuenta de administrador con `ADMIN_EMAIL` y `ADMIN_PASSWORD`.
+### Opción 3 — Compartirla desde tu computadora con un túnel
+
+Con la app corriendo (`yarn dev`), en otra terminal:
+
+```bash
+npx cloudflared tunnel --url http://localhost:3000
+```
+
+Te dará un enlace `https://….trycloudflare.com`. Ojo: quien lo abra desde otro dispositivo verá **sus propios datos**, no los de tu computadora.
 
 ## Licencia
 
