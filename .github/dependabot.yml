@@ -1,22 +1,31 @@
+# Solo actualizaciones de SEGURIDAD, agrupadas en un PR por carpeta.
+# open-pull-requests-limit: 0 apaga las actualizaciones de versión normales.
 version: 2
 updates:
   - package-ecosystem: "npm"
     directory: "/frontend"
     schedule:
-      interval: "monthly"
-    open-pull-requests-limit: 5
+      interval: "weekly"
+    open-pull-requests-limit: 0
     groups:
-      menores:
-        update-types: ["minor", "patch"]
+      seguridad:
+        applies-to: security-updates
+        patterns: ["*"]
   - package-ecosystem: "pip"
     directory: "/backend"
     schedule:
-      interval: "monthly"
-    open-pull-requests-limit: 5
+      interval: "weekly"
+    open-pull-requests-limit: 0
     groups:
-      menores:
-        update-types: ["minor", "patch"]
+      seguridad:
+        applies-to: security-updates
+        patterns: ["*"]
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "monthly"
+      interval: "weekly"
+    open-pull-requests-limit: 0
+    groups:
+      seguridad:
+        applies-to: security-updates
+        patterns: ["*"]
