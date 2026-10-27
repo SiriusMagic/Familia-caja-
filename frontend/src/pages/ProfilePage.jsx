@@ -14,9 +14,9 @@ export default function ProfilePage() {
       </h1>
 
       {/* User Card */}
-      <div className="bg-white rounded-2xl border border-slate-200/60 shadow-sm p-6 mb-4">
+      <div className="bg-white rounded-2xl border border-slate-200/60 shadow-xs p-6 mb-4">
         <div className="flex items-center gap-4 mb-4">
-          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-teal-700 to-emerald-700 flex items-center justify-center text-white font-bold text-2xl shadow-md" data-testid="profile-avatar">
+          <div className="w-16 h-16 rounded-full bg-linear-to-br from-teal-700 to-emerald-700 flex items-center justify-center text-white font-bold text-2xl shadow-md" data-testid="profile-avatar">
             {user?.name?.[0]?.toUpperCase()}
           </div>
           <div>
@@ -34,7 +34,7 @@ export default function ProfilePage() {
       </div>
 
       {/* Language Toggle */}
-      <div className="bg-white rounded-2xl border border-slate-200/60 shadow-sm p-4 mb-4">
+      <div className="bg-white rounded-2xl border border-slate-200/60 shadow-xs p-4 mb-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Globe size={20} className="text-teal-700" />
