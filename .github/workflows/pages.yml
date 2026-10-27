@@ -32,6 +32,11 @@ jobs:
           cache-dependency-path: frontend/yarn.lock
       - run: yarn install --frozen-lockfile
       - run: yarn build
+        env:
+          # Opcional: datos de tu proyecto Supabase (Settings → Secrets and variables → Actions → Variables).
+          # Si no existen, la página publicada funciona en modo local (datos en cada navegador).
+          VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ vars.VITE_SUPABASE_ANON_KEY }}
       - uses: actions/upload-pages-artifact@v5
         if: github.event_name != 'pull_request' && !github.event.repository.private
         with:

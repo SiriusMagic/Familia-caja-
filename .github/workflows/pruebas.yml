@@ -32,3 +32,21 @@ jobs:
           name: reporte-playwright
           path: frontend/playwright-report
           retention-days: 7
+
+  base-de-datos:
+    # Prueba las reglas de seguridad de supabase/schema.sql en un PostgreSQL real.
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports: ["5432:5432"]
+        options: --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      PGHOST: localhost
+      PGUSER: postgres
+      PGPASSWORD: postgres
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash supabase/pruebas/ejecutar.sh

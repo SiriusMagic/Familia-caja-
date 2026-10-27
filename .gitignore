@@ -93,3 +93,6 @@ build/
 # Resultados de Playwright
 test-results/
 playwright-report/
+
+# Plantilla sin secretos (sí se sube)
+!.env.example
