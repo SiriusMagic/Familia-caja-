@@ -1,10 +1,10 @@
 import { useState, useEffect, useCallback } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { useLang } from "@/context/LanguageContext";
-import { HandCoins, ThumbsUp, ThumbsDown, Plus, X, CheckCircle, XCircle, Clock, Vote } from "lucide-react";
+import { HandCoins, ThumbsUp, ThumbsDown, Plus, X, CheckCircle, XCircle, Clock } from "lucide-react";
 
 export default function LoansPage() {
-  const { api, user } = useAuth();
+  const { api } = useAuth();
   const { t } = useLang();
   const [loans, setLoans] = useState([]);
   const [showForm, setShowForm] = useState(false);

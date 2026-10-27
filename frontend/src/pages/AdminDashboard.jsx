@@ -5,7 +5,7 @@ import Logo from "@/components/Logo";
 import { DollarSign, Users, HandCoins, Clock, CheckCircle, XCircle, AlertCircle } from "lucide-react";
 
 export default function AdminDashboard() {
-  const { api, user } = useAuth();
+  const { api } = useAuth();
   const { t } = useLang();
   const [stats, setStats] = useState(null);
   const [pendingUsers, setPendingUsers] = useState([]);
