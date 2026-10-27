@@ -89,3 +89,7 @@ credentials.json
 
 # Compilación de Vite
 build/
+
+# Resultados de Playwright
+test-results/
+playwright-report/

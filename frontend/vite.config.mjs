@@ -9,4 +9,6 @@ export default defineConfig({
   resolve: { alias: { "@": path.resolve(import.meta.dirname, "src") } },
   server: { port: 3000 },
   build: { outDir: "build" },
+  // Vitest: solo pruebas de lógica en src/ (las del navegador están en e2e/ y las corre Playwright)
+  test: { include: ["src/**/*.test.{js,jsx}"] },
 });
