@@ -1,22 +1,29 @@
-# Solo actualizaciones de SEGURIDAD, agrupadas en un PR por carpeta.
-# open-pull-requests-limit: 0 apaga las actualizaciones de versión normales.
+# Seguridad: un PR agrupado cuando una librería tiene un fallo conocido.
+# Versiones: cada mes, un PR con las actualizaciones menores y otro con las mayores.
 version: 2
 updates:
   - package-ecosystem: "npm"
     directory: "/frontend"
     schedule:
-      interval: "weekly"
-    open-pull-requests-limit: 0
+      interval: "monthly"
+    open-pull-requests-limit: 3
     groups:
       seguridad:
         applies-to: security-updates
         patterns: ["*"]
+      menores:
+        applies-to: version-updates
+        update-types: ["minor", "patch"]
+        patterns: ["*"]
+      mayores:
+        applies-to: version-updates
+        update-types: ["major"]
+        patterns: ["*"]
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
-    open-pull-requests-limit: 0
+      interval: "monthly"
+    open-pull-requests-limit: 3
     groups:
-      seguridad:
-        applies-to: security-updates
+      acciones:
         patterns: ["*"]

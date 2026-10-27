@@ -23,7 +23,7 @@ Hay dos tipos de usuario con un único inicio de sesión. **El primer usuario qu
 
 ## Tecnología
 
-- **React 19** + **Vite 7** + Tailwind CSS + shadcn/ui
+- **React 19** + **Vite 8** + **Tailwind CSS 4**
 - **Servidor simulado en el navegador** (`frontend/src/lib/localApi.js`): mismas rutas `/api/...` y misma lógica que el antiguo backend FastAPI + MongoDB
 - Contraseñas guardadas con hash SHA-256 y sal (nunca en texto plano)
 - Las fotos de comprobantes se reducen (máx. 1000 px, JPEG) para que quepan en el navegador

@@ -38,7 +38,7 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 px-4 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-cyan-950 via-teal-900 to-emerald-900 h-[55%]" />
+      <div className="absolute inset-0 bg-linear-to-br from-cyan-950 via-teal-900 to-emerald-900 h-[55%]" />
       <div className="absolute inset-0 h-[55%] opacity-20" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=800&q=60')`, backgroundSize: "cover", backgroundPosition: "center" }} />
 
       <div className="relative z-10 w-full max-w-sm">
@@ -63,27 +63,27 @@ export default function LoginPage() {
             {mode === "register" && (
               <>
                 <input data-testid="register-name" value={form.name} onChange={set("name")} placeholder={t("name")} required
-                  className="w-full h-12 px-4 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent transition-all" />
+                  className="w-full h-12 px-4 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-teal-600 focus:border-transparent transition-all" />
                 <div className="grid grid-cols-2 gap-3">
                   <input data-testid="register-cedula" value={form.cedula} onChange={set("cedula")} placeholder={t("cedula")}
-                    className="w-full h-12 px-4 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent transition-all" />
+                    className="w-full h-12 px-4 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-teal-600 focus:border-transparent transition-all" />
                   <input data-testid="register-phone" value={form.phone} onChange={set("phone")} placeholder={t("phone")}
-                    className="w-full h-12 px-4 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent transition-all" />
+                    className="w-full h-12 px-4 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-teal-600 focus:border-transparent transition-all" />
                 </div>
               </>
             )}
             <input data-testid="login-email" value={form.email} onChange={set("email")} type="email" placeholder={t("email")} required
-              className="w-full h-12 px-4 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent transition-all" />
+              className="w-full h-12 px-4 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-teal-600 focus:border-transparent transition-all" />
             <div className="relative">
               <input data-testid="login-password" value={form.password} onChange={set("password")} type={showPw ? "text" : "password"} placeholder={t("password")} required minLength={4}
-                className="w-full h-12 px-4 pr-12 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent transition-all" />
+                className="w-full h-12 px-4 pr-12 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-teal-600 focus:border-transparent transition-all" />
               <button type="button" onClick={() => setShowPw(!showPw)} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
                 {showPw ? <EyeOff size={18} /> : <Eye size={18} />}
               </button>
             </div>
 
             <button data-testid="auth-submit-btn" type="submit" disabled={loading}
-              className="w-full h-12 rounded-xl font-semibold text-white bg-gradient-to-r from-teal-700 to-emerald-700 hover:from-teal-600 hover:to-emerald-600 active:scale-[0.98] transition-all duration-200 shadow-md disabled:opacity-50 flex items-center justify-center gap-2">
+              className="w-full h-12 rounded-xl font-semibold text-white bg-linear-to-r from-teal-700 to-emerald-700 hover:from-teal-600 hover:to-emerald-600 active:scale-[0.98] transition-all duration-200 shadow-md disabled:opacity-50 flex items-center justify-center gap-2">
               {loading ? <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : mode === "login" ? <><LogIn size={18} /> {t("login")}</> : <><UserPlus size={18} /> {t("register")}</>}
             </button>
           </form>

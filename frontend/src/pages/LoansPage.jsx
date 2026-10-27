@@ -70,20 +70,20 @@ export default function LoansPage() {
           {t("nav_loans")}
         </h1>
         <button data-testid="request-loan-btn" onClick={() => setShowForm(true)}
-          className="h-10 px-4 rounded-xl font-semibold text-white bg-gradient-to-r from-teal-700 to-emerald-700 hover:from-teal-600 hover:to-emerald-600 active:scale-95 transition-all shadow-sm flex items-center gap-1 text-sm">
+          className="h-10 px-4 rounded-xl font-semibold text-white bg-linear-to-r from-teal-700 to-emerald-700 hover:from-teal-600 hover:to-emerald-600 active:scale-95 transition-all shadow-xs flex items-center gap-1 text-sm">
           <Plus size={16} /> {t("request_loan")}
         </button>
       </div>
 
       {loans.length === 0 ? (
-        <div className="bg-white rounded-2xl border border-slate-200/60 shadow-sm p-8 text-center">
+        <div className="bg-white rounded-2xl border border-slate-200/60 shadow-xs p-8 text-center">
           <HandCoins size={40} className="text-slate-300 mx-auto mb-2" />
           <p className="text-slate-400 text-sm">{t("no_pending")}</p>
         </div>
       ) : (
         <div className="space-y-3">
           {loans.map((loan) => (
-            <div key={loan._id} className="bg-white rounded-2xl border border-slate-200/60 shadow-sm p-4" data-testid={`loan-${loan._id}`}>
+            <div key={loan._id} className="bg-white rounded-2xl border border-slate-200/60 shadow-xs p-4" data-testid={`loan-${loan._id}`}>
               <div className="flex items-start justify-between mb-2">
                 <div>
                   <p className="font-bold text-slate-900 text-lg">${loan.amount?.toLocaleString("en", { minimumFractionDigits: 2 })}</p>
@@ -129,7 +129,7 @@ export default function LoansPage() {
 
       {/* New Loan Modal */}
       {showForm && (
-        <div className="fixed inset-0 z-[60] flex items-end justify-center bg-black/40 backdrop-blur-sm" data-testid="loan-modal">
+        <div className="fixed inset-0 z-60 flex items-end justify-center bg-black/40 backdrop-blur-xs" data-testid="loan-modal">
           <div className="bg-white rounded-t-3xl w-full max-w-lg p-6 pb-24 shadow-2xl animate-slideUp">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-bold text-slate-900" style={{ fontFamily: "Manrope" }}>{t("request_loan")}</h3>
@@ -139,21 +139,21 @@ export default function LoansPage() {
               <input data-testid="loan-amount-input" type="number" step="0.01" min="1" value={form.amount}
                 onChange={(e) => setForm((p) => ({ ...p, amount: e.target.value }))}
                 placeholder={`${t("loan_amount")} ($)`} required
-                className="w-full h-12 px-4 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-600" />
+                className="w-full h-12 px-4 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-teal-600" />
               
               <select data-testid="loan-purpose-select" value={form.purpose}
                 onChange={(e) => setForm((p) => ({ ...p, purpose: e.target.value }))}
-                className="w-full h-12 px-4 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-600">
+                className="w-full h-12 px-4 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 focus:outline-hidden focus:ring-2 focus:ring-teal-600">
                 {purposes.map((p) => <option key={p} value={p}>{t(`loan_purposes.${p}`)}</option>)}
               </select>
 
               <textarea data-testid="loan-description-input" value={form.description}
                 onChange={(e) => setForm((p) => ({ ...p, description: e.target.value }))}
                 placeholder={t("explain_loan")} rows={3}
-                className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-600 resize-none" />
+                className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-teal-600 resize-none" />
 
               <button data-testid="submit-loan-btn" type="submit" disabled={submitting}
-                className="w-full h-12 rounded-xl font-semibold text-white bg-gradient-to-r from-teal-700 to-emerald-700 hover:from-teal-600 hover:to-emerald-600 active:scale-[0.98] transition-all shadow-md disabled:opacity-50 flex items-center justify-center gap-2">
+                className="w-full h-12 rounded-xl font-semibold text-white bg-linear-to-r from-teal-700 to-emerald-700 hover:from-teal-600 hover:to-emerald-600 active:scale-[0.98] transition-all shadow-md disabled:opacity-50 flex items-center justify-center gap-2">
                 {submitting ? <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : t("submit_loan")}
               </button>
             </form>

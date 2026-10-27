@@ -53,7 +53,7 @@ export default function AdminDashboard() {
   return (
     <div className="pb-24" data-testid="admin-dashboard">
       {/* Header */}
-      <div className="bg-gradient-to-br from-cyan-950 via-teal-900 to-emerald-900 rounded-b-3xl px-6 pt-6 pb-10 shadow-lg">
+      <div className="bg-linear-to-br from-cyan-950 via-teal-900 to-emerald-900 rounded-b-3xl px-6 pt-6 pb-10 shadow-lg">
         <div className="flex items-center justify-between mb-6">
           <Logo size="sm" />
           <span className="text-teal-200 text-xs font-medium px-3 py-1 bg-white/10 rounded-full" data-testid="admin-badge">Admin</span>
@@ -77,7 +77,7 @@ export default function AdminDashboard() {
 
         {/* Pending Payments */}
         {pendingPayments.map((p) => (
-          <div key={p._id} className="bg-white rounded-2xl border border-slate-200/60 shadow-sm p-4" data-testid={`pending-payment-${p._id}`}>
+          <div key={p._id} className="bg-white rounded-2xl border border-slate-200/60 shadow-xs p-4" data-testid={`pending-payment-${p._id}`}>
             <div className="flex items-center justify-between mb-3">
               <div>
                 <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">{t("payment_approval")}</span>
@@ -104,7 +104,7 @@ export default function AdminDashboard() {
 
         {/* Pending Users */}
         {pendingUsers.map((u) => (
-          <div key={u._id} className="bg-white rounded-2xl border border-slate-200/60 shadow-sm p-4" data-testid={`pending-user-${u._id}`}>
+          <div key={u._id} className="bg-white rounded-2xl border border-slate-200/60 shadow-xs p-4" data-testid={`pending-user-${u._id}`}>
             <div className="flex items-center justify-between mb-3">
               <div>
                 <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">{t("registration_approval")}</span>
@@ -129,7 +129,7 @@ export default function AdminDashboard() {
         ))}
 
         {pendingPayments.length === 0 && pendingUsers.length === 0 && (
-          <div className="bg-white rounded-2xl border border-slate-200/60 shadow-sm p-8 text-center" data-testid="no-pending">
+          <div className="bg-white rounded-2xl border border-slate-200/60 shadow-xs p-8 text-center" data-testid="no-pending">
             <CheckCircle size={40} className="text-emerald-400 mx-auto mb-2" />
             <p className="text-slate-500 text-sm">{t("no_pending")}</p>
           </div>

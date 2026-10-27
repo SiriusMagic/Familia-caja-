@@ -50,7 +50,7 @@ export default function MembersPage() {
           <Users size={24} className="inline mr-2 text-teal-700" />
           {t("nav_members")}
         </h1>
-        <div className="bg-white rounded-2xl border border-slate-200/60 shadow-sm p-8 text-center">
+        <div className="bg-white rounded-2xl border border-slate-200/60 shadow-xs p-8 text-center">
           <Shield size={40} className="text-slate-300 mx-auto mb-2" />
           <p className="text-slate-400 text-sm">Solo el administrador puede ver esta seccion</p>
         </div>
@@ -83,7 +83,7 @@ export default function MembersPage() {
 
       <div className="space-y-2">
         {users.map((u) => (
-          <div key={u._id} className="bg-white rounded-2xl border border-slate-200/60 shadow-sm overflow-hidden" data-testid={`member-${u._id}`}>
+          <div key={u._id} className="bg-white rounded-2xl border border-slate-200/60 shadow-xs overflow-hidden" data-testid={`member-${u._id}`}>
             <button onClick={() => setExpandedUser(expandedUser === u._id ? null : u._id)}
               className="w-full flex items-center justify-between p-4 text-left">
               <div className="flex items-center gap-3">

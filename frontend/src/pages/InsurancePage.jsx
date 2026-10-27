@@ -9,7 +9,7 @@ export default function InsurancePage() {
         <Shield size={24} className="inline mr-2 text-teal-700" />
         {t("nav_insurance")}
       </h1>
-      <div className="bg-white rounded-2xl border border-slate-200/60 shadow-sm p-12 text-center">
+      <div className="bg-white rounded-2xl border border-slate-200/60 shadow-xs p-12 text-center">
         <Construction size={48} className="text-amber-400 mx-auto mb-3" />
         <p className="text-slate-500 font-medium">Proximamente</p>
         <p className="text-slate-400 text-sm mt-1">Esta seccion estara disponible pronto</p>
