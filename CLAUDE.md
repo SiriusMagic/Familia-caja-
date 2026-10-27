@@ -1,6 +1,6 @@
 # ahorro-familiar
 
-Caja de ahorro familiar (prototipo) que funciona 100 % en el navegador. La lógica (usuarios, pagos, préstamos por votación) está en `frontend/src/lib/localApi.js`. Los datos viven en el localStorage de cada dispositivo.
+Caja de ahorro familiar (prototipo) que funciona 100 % en el navegador. Dos modos con las mismas pantallas: local (`frontend/src/lib/localApi.js`, datos en el localStorage) y compartido con Supabase (`frontend/src/lib/supabaseApi.js`; reglas y RLS en `supabase/schema.sql`), elegido por `frontend/src/lib/api.js` según `VITE_SUPABASE_URL`/`VITE_SUPABASE_ANON_KEY`. Toda regla de seguridad del modo compartido va en SQL, nunca solo en el navegador.
 
 ## Comandos
 
@@ -10,6 +10,7 @@ yarn install
 yarn dev            # desarrollo en http://localhost:3000
 yarn test           # pruebas de lógica (Vitest)
 yarn test:e2e       # flujo completo en navegador (Playwright)
+bash ../supabase/pruebas/ejecutar.sh   # reglas de la base (necesita PostgreSQL)
 yarn build
 ```
 

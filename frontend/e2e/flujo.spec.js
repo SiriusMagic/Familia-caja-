@@ -61,7 +61,10 @@ test("registro, aprobación y pago con comprobante", async ({ page }) => {
 
   await login("ana@x.com");
   await expect(T("admin-dashboard")).toContainText("$75.00");
-  const receipt = await page.evaluate(() => JSON.parse(localStorage.getItem("ahorro-familiar-db-v1")).payments[0].receipt_image);
-  expect(receipt.startsWith("data:image/jpeg;base64,")).toBe(true);
+  if (!process.env.VITE_SUPABASE_URL) {
+    // Modo local: el comprobante se guarda comprimido en este navegador.
+    const receipt = await page.evaluate(() => JSON.parse(localStorage.getItem("ahorro-familiar-db-v1")).payments[0].receipt_image);
+    expect(receipt.startsWith("data:image/jpeg;base64,")).toBe(true);
+  }
   expect(errors).toEqual([]);
 });
