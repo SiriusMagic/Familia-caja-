@@ -62,6 +62,16 @@ npx cloudflared tunnel --url http://localhost:3000
 
 Te dará un enlace `https://….trycloudflare.com`. Ojo: quien lo abra desde otro dispositivo verá **sus propios datos**, no los de tu computadora.
 
+## Pruebas
+
+```bash
+cd frontend
+yarn test       # 10 pruebas: registro, aprobación, roles, bloqueo por intentos, pagos y votación de préstamos
+yarn test:e2e   # en Chromium: registrar admin y socio → aprobar → subir comprobante → el admin ve el pago
+```
+
+GitHub las ejecuta en cada cambio. Las actualizaciones menores de Dependabot se fusionan solas cuando las pruebas pasan.
+
 ## Licencia
 
 Copyright 2026 SiriusMagic

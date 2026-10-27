@@ -31,6 +31,16 @@ function load() {
   return memoryDb || emptyDb();
 }
 
+/** Borra todos los datos guardados (útil para reiniciar o para las pruebas). */
+export function resetLocalData() {
+  memoryDb = null;
+  try {
+    window.localStorage.removeItem(STORAGE_KEY);
+  } catch {
+    /* sin acceso a localStorage */
+  }
+}
+
 function save(db) {
   memoryDb = db;
   try {
