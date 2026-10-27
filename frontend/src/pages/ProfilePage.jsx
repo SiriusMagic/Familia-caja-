@@ -1,6 +1,6 @@
 import { useAuth } from "@/context/AuthContext";
 import { useLang } from "@/context/LanguageContext";
-import { UserCircle, Globe, LogOut, Mail, Phone, CreditCard, Shield } from "lucide-react";
+import { UserCircle, Globe, LogOut, Mail, Phone, CreditCard } from "lucide-react";
 
 export default function ProfilePage() {
   const { user, logout } = useAuth();

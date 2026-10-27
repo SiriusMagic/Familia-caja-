@@ -58,7 +58,7 @@ export function AuthProvider({ children }) {
   };
 
   const logout = async () => {
-    try { await api.post("/api/auth/logout"); } catch {}
+    try { await api.post("/api/auth/logout"); } catch { /* la sesión local se cierra igual */ }
     clearAuth();
   };
 
